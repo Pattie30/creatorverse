@@ -52,26 +52,32 @@ function ViewCreator() {
 
   return (
     <div style={styles.container}>
-      <h1>{creator.name}</h1>
+      
+
+      <h1 style={styles.title}>{creator.Name}</h1>
+
+
 
       {creator.imageURL && (
         <img
           src={creator.imageURL}
-          alt={creator.name}
+          alt={creator.Name}
           style={styles.image}
         />
       )}
 
-      <p>{creator.description}</p>
+      <p>{creator.Description}</p>
 
       <a
-        href={creator.url}
+        href={creator.Url}
         target="_blank"
         rel="noopener noreferrer"
-        style={styles.link}
+        style={{ textDecoration: "none" }}
       >
-        Visit Profile
-      </a>
+        <button style={styles.linkButton}>
+          Visit Profile 
+        </button>
+      </a> 
 
       {/* edit */}
       <Link to={`/edit/${id}`}>
@@ -97,6 +103,14 @@ const styles = {
     maxWidth: '600px',
     margin: '0 auto',
   },
+  title: {
+    fontSize: '2.5rem',
+    fontWeight: 'bold',
+    textAlign: 'center',
+    marginBottom: '20px',
+    color: '#2E7D32',
+    textTransform: 'uppercase',
+  },
   image: {
     width: '100%',
     borderRadius: '8px',
@@ -107,7 +121,17 @@ const styles = {
     color: '#007bff',
     textDecoration: 'none',
     display: 'inline-block',
-    marginBottom: '20px',
+    marginBottom: '30px',
+  },
+  linkButton: {
+    padding: '10px 20px',
+    backgroundColor: '#007bff',
+    color: 'white',
+    border: 'none',
+    borderRadius: '6px',
+    cursor: 'pointer',
+    marginBottom: '30px',
+    marginRight: '10px',
   },
   editButton: {
     padding: '10px 20px',

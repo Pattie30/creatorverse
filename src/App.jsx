@@ -36,8 +36,8 @@ function App() {
   }
 
   return (
-    <div style={{ padding: '20px' }}>
-      <Lottie
+    <div style={{ position: 'relative' }}>
+    <Lottie
         animationData={gardenAnimation}
         loop={true}
         style={{
@@ -51,6 +51,8 @@ function App() {
         }}
       />
 
+    <div style={{ padding: '20px', position: 'relative', zIndex: 1 }}>
+      
       <Routes>
 
 
@@ -79,6 +81,7 @@ function App() {
         />
 
       </Routes>
+    </div>
     </div>
   )
 }
