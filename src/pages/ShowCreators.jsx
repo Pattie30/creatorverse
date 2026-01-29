@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { supabase } from '../client'
+import supabase from '../client'
 import SelfSufficientMeImg from '../assets/SelfSufficientMe.png'
 import Lottie from "lottie-react"
 import gardenAnimation from "../assets/gardenernergy.json"

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import Lottie from "lottie-react"
-import { supabase } from './client'
+import  supabase  from './client'
 import ShowCreators from './pages/ShowCreators'
 import AddCreator from './pages/AddCreator'
 import ViewCreator from './pages/ViewCreator'
