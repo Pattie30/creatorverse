@@ -7,7 +7,7 @@ import gardenAnimation from "../assets/gardenernergy.json"
 import SunImg from "../assets/theSun.jpg"
 
 function ShowCreators({ creators, setCreators }) {
-console.log("ShowCreators is rendering");
+  console.log("ShowCreators is rendering");
 
   async function removeCreator(id) {
     const { error } = await supabase
@@ -18,13 +18,14 @@ console.log("ShowCreators is rendering");
     if (error) {
       console.error("Error deleting creator:", error)
     } else {
-      
       setCreators(prev => prev.filter(c => c.id !== id))
     }
   }
 
   return (
     <div style={styles.container}>
+
+      {/* 🌞 Sun in the top-right corner */}
       <img
         src={SunImg}
         alt="sun"
@@ -38,7 +39,7 @@ console.log("ShowCreators is rendering");
         }}
       />
 
-      <h1>Gardening Creator Collection</h1>
+      <h1 style={styles.title}>Gardening Creator Collection</h1>
 
       <Link to="/new">
         <button style={styles.addButton}>Add a Content Creator</button>
@@ -48,17 +49,13 @@ console.log("ShowCreators is rendering");
         {creators.map((creator) => (
           <div key={creator.id} style={styles.card}>
 
-            
             <Link to={`/creator/${creator.id}`} style={styles.cardLink}>
-              <h2>{creator.name}</h2>
+            {console.log("Name:", creator.Name)}
+              <h2 style={styles.cardTitle}>{creator.Name}</h2>
 
               <img
-                src={
-                  creator.imageURL && creator.imageURL.trim() !== ""
-                    ? creator.imageURL
-                    : SelfSufficientMeImg
-                }
-                alt={creator.name}
+                src={creator.imageURL ? creator.imageURL : SelfSufficientMeImg}
+                alt={creator.Name}
                 style={styles.image}
               />
 
@@ -67,7 +64,6 @@ console.log("ShowCreators is rendering");
               <span style={styles.viewMore}>View Profile →</span>
             </Link>
 
-            {/* delete */}
             <button
               onClick={() => removeCreator(creator.id)}
               style={styles.deleteButton}
@@ -78,6 +74,7 @@ console.log("ShowCreators is rendering");
           </div>
         ))}
       </div>
+
       <div style={{ marginTop: "40px" }}>
         <Lottie
           animationData={gardenAnimation}
@@ -99,6 +96,14 @@ const styles = {
   container: {
     padding: '20px',
   },
+  title: {
+  fontSize: "2rem",
+  fontWeight: "700",
+  textAlign: "left",
+  marginBottom: "60px",
+  color: "#672ba6",   
+  fontFamily: "Great Vibes, Georgia, serif",  
+},
   addButton: {
     marginBottom: '20px',
     padding: '10px 20px',
@@ -121,6 +126,16 @@ const styles = {
     width: '250px',
     position: 'relative',
   },
+
+  
+  cardTitle: {
+    marginBottom: "10px",
+    fontSize: "1.2rem",
+    fontWeight: "bold",
+    textAlign: "center",
+    color: "#672ba6",
+  },
+
   cardLink: {
     textDecoration: 'none',
     color: 'inherit',
