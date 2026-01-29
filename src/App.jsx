@@ -34,10 +34,28 @@ function App() {
   if (error) {
     return <div>Error: {error}</div>
   }
+  const headerStyle = {
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    width: '100%',
+    padding: '20px 0',
+    backgroundColor: 'white',
+    textAlign: 'center',
+    fontSize: '2rem',
+    fontWeight: 'bold',
+    zIndex: 1000,
+    borderBottom: '2px solid #ddd',
+    color: '#6a0dad',
+    fontFamily: "'Playfair Display', serif"
+
+  }
 
   return (
-    <div style={{ position: 'relative' }}>
-    <Lottie
+    <div style={{ padding: '20px' }}>
+      <h1 style={headerStyle}>Gardening Creator Collection</h1>
+
+      <Lottie
         animationData={gardenAnimation}
         loop={true}
         style={{
@@ -50,9 +68,9 @@ function App() {
           opacity: 0.25
         }}
       />
+      <div style={{ marginTop: "140px" }}>
 
-    <div style={{ padding: '20px', position: 'relative', zIndex: 1 }}>
-      
+
       <Routes>
 
 
@@ -83,6 +101,7 @@ function App() {
       </Routes>
     </div>
     </div>
+    
   )
 }
 

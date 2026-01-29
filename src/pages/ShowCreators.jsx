@@ -39,7 +39,7 @@ function ShowCreators({ creators, setCreators }) {
         }}
       />
 
-      <h1 style={styles.title}>Gardening Creator Collection</h1>
+      
 
       <Link to="/new">
         <button style={styles.addButton}>Add a Content Creator</button>
@@ -75,7 +75,7 @@ function ShowCreators({ creators, setCreators }) {
         ))}
       </div>
 
-      <div style={{ marginTop: "40px" }}>
+      <div style={{ marginTop: "200px" }}>
         <Lottie
           animationData={gardenAnimation}
           loop={true}
@@ -94,16 +94,18 @@ function ShowCreators({ creators, setCreators }) {
 
 const styles = {
   container: {
-    padding: '20px',
+    padding: '140px, 20px 20px',
+    maxWidth : '600px',
+    margin: '0 auto',
   },
   title: {
-  fontSize: "2rem",
-  fontWeight: "700",
-  textAlign: "left",
-  marginBottom: "60px",
-  color: "#672ba6",   
-  fontFamily: "Great Vibes, Georgia, serif",  
-},
+    fontSize: "2rem",
+    fontWeight: "700",
+    textAlign: "left",
+    marginBottom: "60px",
+    color: "#672ba6",
+    fontFamily: "Great Vibes, Georgia, serif",
+  },
   addButton: {
     marginBottom: '20px',
     padding: '10px 20px',
