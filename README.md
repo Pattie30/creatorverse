@@ -40,22 +40,20 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented required features:
 
-👉🏿<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+👉🏿  [Watch the walkthrough](./assets/creatorverse-demo.mp4)
 
-<!-- Replace this with whatever GIF tool you used! -->
-GIF created with ...  👉🏿 GIF tool here
-<!-- Recommended tools:
-[Kap](https://getkap.co/) for macOS
-[ScreenToGif](https://www.screentogif.com/) for Windows
-[peek](https://github.com/phw/peek) for Linux. -->
+
+GIF created with ...  👉🏿 ScreenToGif
+
+
 
 ## Notes
 
-Describe any challenges encountered while building the app or any additional context you'd like to add.
+I was very nervous to start this project since my experience with React was of almost 4 years ago. I had a few challenges around getting data and component logic to line up. Debugging took the most amount of time like React having creator.name while supabase creator.Name. I had to remind myself often that I had to keep going. It gave me a great boost of confidence to complete.
 
 ## License
 
-Copyright [👉🏿 yyyy] [👉🏿 name of copyright owner]
+Copyright [👉🏿 2026] [👉🏿 Patricia C.]
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
 
