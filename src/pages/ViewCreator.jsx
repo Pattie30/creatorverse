@@ -52,10 +52,24 @@ function ViewCreator() {
 
   return (
     <div style={styles.container}>
-      
+
 
       <h1 style={styles.title}>{creator.Name}</h1>
 
+      <button
+        onClick={() => navigate('/')}
+        style={{
+          padding: "8px 16px",
+          backgroundColor: "#777",
+          color: "white",
+          border: "none",
+          borderRadius: "6px",
+          cursor: "pointer",
+          marginBottom: "15px"
+        }}
+      >
+        ← Back to Home
+      </button>
 
 
       {creator.imageURL && (
@@ -67,6 +81,7 @@ function ViewCreator() {
       )}
 
       <p>{creator.Description}</p>
+      {creator.Url ? (
 
       <a
         href={creator.Url}
@@ -75,9 +90,14 @@ function ViewCreator() {
         style={{ textDecoration: "none" }}
       >
         <button style={styles.linkButton}>
-          Visit Profile 
+          Visit Profile
         </button>
-      </a> 
+      </a>
+      ) : (
+      <p style={{ color: "#777", fontStyle: "italic", marginTop: "10px" }}>
+        No profile link available
+      </p>
+)}
 
       {/* edit */}
       <Link to={`/edit/${id}`}>

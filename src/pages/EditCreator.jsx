@@ -73,6 +73,24 @@ function EditCreator() {
   return (
     <div style={{ padding: "20px", maxWidth: "600px", margin: "0 auto" }}>
       <h1>Edit Creator</h1>
+      <h2 style={{ marginTop: "-10px", color: "#555" }}>
+        {formData.name}
+      </h2>
+      <button
+        onClick={() => navigate('/')}
+        style={{
+          padding: "8px 16px",
+          backgroundColor: "#777",
+          color: "white",
+          border: "none",
+          borderRadius: "6px",
+          cursor: "pointer",
+          marginBottom: "15px"
+        }}
+      >
+        ← Back to Home
+      </button>
+
 
       <form
         onSubmit={submitCreator}
@@ -148,7 +166,7 @@ function EditCreator() {
             marginTop: "10px"
           }}
         >
-          
+          Save Changes
         </button>
       </form>
     </div>
