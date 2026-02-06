@@ -88,7 +88,7 @@ function ShowCreators({ creators, setCreators }) {
             {/* Button row */}
             <div style={{ display: "flex", gap: "10px", marginTop: "10px" }}>
               <Link to={`/creator/${creator.id}`}>
-                <button style={styles.viewButton}>View Profile</button>
+                <button className="secondary">View Profile</button>
               </Link>
 
               <button
