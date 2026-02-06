@@ -81,12 +81,14 @@ function ViewCreator() {
       )}
 
       <p>{creator.Description}</p>
+
+
       {creator.Url ? (
 
-      <a
-        href={creator.Url}
-        target="_blank"
-        rel="noopener noreferrer"
+        <a
+          href={creator.Url}
+          target="_blank"
+          rel="noopener noreferrer"
         style={{ textDecoration: "none" }}
       >
         <button style={styles.linkButton}>

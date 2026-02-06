@@ -39,8 +39,6 @@ function ShowCreators({ creators, setCreators }) {
         }}
       />
 
-      
-
       <Link to="/new">
         <button style={styles.addButton}>Add a Content Creator</button>
       </Link>
@@ -49,8 +47,8 @@ function ShowCreators({ creators, setCreators }) {
         {creators.map((creator) => (
           <div key={creator.id} style={styles.card}>
 
+            {/* Internal link section */}
             <Link to={`/creator/${creator.id}`} style={styles.cardLink}>
-            {console.log("Name:", creator.Name)}
               <h2 style={styles.cardTitle}>{creator.Name}</h2>
 
               <img
@@ -59,17 +57,47 @@ function ShowCreators({ creators, setCreators }) {
                 style={styles.image}
               />
 
-              <p>{creator.description}</p>
-
-              <span style={styles.viewMore}>View Profile →</span>
+              <p>{creator.Description}</p>
             </Link>
 
-            <button
-              onClick={() => removeCreator(creator.id)}
-              style={styles.deleteButton}
-            >
-              Delete
-            </button>
+            {/* External link button */}
+            {creator.Url ? (
+              <a
+                href={creator.Url}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  color: "#007bff",
+                  display: "block",
+                  marginTop: "10px",
+                  fontWeight: "bold"
+                }}
+              >
+                Visit Creator Website
+              </a>
+            ) : (
+              <p style={{
+                color: "#777",
+                fontStyle: "italic",
+                marginTop: "10px"
+              }}>
+                No profile link available
+              </p>
+            )}
+
+            {/* Button row */}
+            <div style={{ display: "flex", gap: "10px", marginTop: "10px" }}>
+              <Link to={`/creator/${creator.id}`}>
+                <button style={styles.viewButton}>View Profile</button>
+              </Link>
+
+              <button
+                onClick={() => removeCreator(creator.id)}
+                style={styles.deleteButton}
+              >
+                Delete
+              </button>
+            </div>
 
           </div>
         ))}
@@ -95,16 +123,8 @@ function ShowCreators({ creators, setCreators }) {
 const styles = {
   container: {
     padding: '140px, 20px 20px',
-    maxWidth : '600px',
+    maxWidth: '600px',
     margin: '0 auto',
-  },
-  title: {
-    fontSize: "2rem",
-    fontWeight: "700",
-    textAlign: "left",
-    marginBottom: "60px",
-    color: "#672ba6",
-    fontFamily: "Great Vibes, Georgia, serif",
   },
   addButton: {
     marginBottom: '20px',
@@ -128,8 +148,6 @@ const styles = {
     width: '250px',
     position: 'relative',
   },
-
-  
   cardTitle: {
     marginBottom: "10px",
     fontSize: "1.2rem",
@@ -137,7 +155,6 @@ const styles = {
     textAlign: "center",
     color: "#672ba6",
   },
-
   cardLink: {
     textDecoration: 'none',
     color: 'inherit',
@@ -148,14 +165,15 @@ const styles = {
     marginBottom: '10px',
     objectFit: 'cover',
   },
-  viewMore: {
-    marginTop: '10px',
-    display: 'inline-block',
-    color: '#007bff',
-    fontWeight: 'bold',
+  viewButton: {
+    padding: "8px 12px",
+    backgroundColor: "#007bff",
+    color: "white",
+    border: "none",
+    borderRadius: "6px",
+    cursor: "pointer",
   },
   deleteButton: {
-    marginTop: '10px',
     padding: '8px 12px',
     backgroundColor: '#f44336',
     color: 'white',
