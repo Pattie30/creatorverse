@@ -1,4 +1,6 @@
 import React from 'react'
+import { useEffect } from 'react'
+import { useLocation } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import supabase from '../client'
 import SelfSufficientMeImg from '../assets/SelfSufficientMe.png'
@@ -7,6 +9,17 @@ import gardenAnimation from "../assets/gardenernergy.json"
 import SunImg from "../assets/theSun.jpg"
 
 function ShowCreators({ creators, setCreators }) {
+  const location = useLocation()
+
+  useEffect(() => {
+    async function refresh() {
+      const { data } = await supabase.from('creators').select('*')
+      setCreators(data)
+    }
+    refresh()
+  }, [location.pathname])
+  
+
   console.log("ShowCreators is rendering");
 
   async function removeCreator(id) {
@@ -48,8 +61,13 @@ function ShowCreators({ creators, setCreators }) {
           <div key={creator.id} style={styles.card}>
 
             {/* Internal link section */}
+
+
             <Link to={`/creator/${creator.id}`} style={styles.cardLink}>
               <h2 style={styles.cardTitle}>{creator.Name}</h2>
+
+
+
 
               <img
                 src={creator.imageURL ? creator.imageURL : SelfSufficientMeImg}

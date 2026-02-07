@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
-import  supabase  from '../client'
+import supabase from '../client'
 
 function EditCreator() {
   const { id } = useParams()
   const navigate = useNavigate()
 
+  // React state uses lowercase keys
   const [formData, setFormData] = useState({
     name: "",
     url: "",
@@ -15,32 +16,32 @@ function EditCreator() {
 
   const [loading, setLoading] = useState(true)
 
-  
   useEffect(() => {
-    async function fetchCreator() {
-      const { data, error } = await supabase
-        .from('creators')
-        .select('*')
-        .eq('id', id)
-        .single()
+  async function fetchCreator() {
+    const { data, error } = await supabase
+      .from('creators')
+      .select('*')
+      .eq('id', id)
+      .single()
 
-      if (error) {
-        console.error("Error loading creator:", error)
-      } else {
-        setFormData({
-          name: data.name || "",
-          url: data.url || "",
-          description: data.description || "",
-          imageURL: data.imageURL || ""
-        })
-      }
+    console.log("Fetched creator:", data)   // ← PUT IT RIGHT HERE
 
-      setLoading(false)
+    if (error) {
+      console.error("Error loading creator:", error)
+    } else {
+      setFormData({
+        name: data.Name || "",
+        url: data.Url || "",
+        description: data.Description || "",
+        imageURL: data.imageURL || ""
+      })
     }
 
-    fetchCreator()
-  }, [id])
+    setLoading(false)
+  }
 
+  fetchCreator()
+}, [id])
 
   function updateField(e) {
     const { name, value } = e.target
@@ -50,13 +51,22 @@ function EditCreator() {
     }))
   }
 
-  
   async function submitCreator(e) {
     e.preventDefault()
 
+    // Map React lowercase → Supabase uppercase
+    const updates = {
+      Name: formData.name,
+      Url: formData.url,
+      Description: formData.description,
+      imageURL: formData.imageURL
+    }
+
+    console.log("Sending updates:", updates)
+
     const { error } = await supabase
       .from('creators')
-      .update(formData)
+      .update(updates)
       .eq('id', id)
 
     if (error) {
@@ -71,11 +81,12 @@ function EditCreator() {
   }
 
   return (
-    <div style={{ padding: "20px", maxWidth: "600px", margin: "0 auto" }}>
+    <main style={{ padding: "20px", maxWidth: "600px", margin: "0 auto" }}>
       <h1>Edit Creator</h1>
       <h2 style={{ marginTop: "-10px", color: "#555" }}>
         {formData.name}
       </h2>
+
       <button
         onClick={() => navigate('/')}
         style={{
@@ -91,7 +102,6 @@ function EditCreator() {
         ← Back to Home
       </button>
 
-
       <form
         onSubmit={submitCreator}
         style={{ display: "flex", flexDirection: "column", gap: "15px" }}
@@ -101,7 +111,6 @@ function EditCreator() {
           <input
             type="text"
             name="name"
-            required
             value={formData.name}
             onChange={updateField}
             style={{ width: "100%", padding: "8px" }}
@@ -113,7 +122,6 @@ function EditCreator() {
           <input
             type="text"
             name="url"
-            required
             value={formData.url}
             onChange={updateField}
             style={{ width: "100%", padding: "8px" }}
@@ -124,7 +132,6 @@ function EditCreator() {
           Description:
           <textarea
             name="description"
-            required
             value={formData.description}
             onChange={updateField}
             style={{ width: "100%", padding: "8px", minHeight: "100px" }}
@@ -169,7 +176,7 @@ function EditCreator() {
           Save Changes
         </button>
       </form>
-    </div>
+    </main>
   )
 }
 

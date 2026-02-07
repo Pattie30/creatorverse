@@ -4,6 +4,7 @@ function CreatorCard({ name, url, description, imageURL }) {
   return (
     <div style={styles.wrapper}>
       <div style={styles.card}>
+
         {imageURL && (
           <img
             src={imageURL}
@@ -16,15 +17,20 @@ function CreatorCard({ name, url, description, imageURL }) {
           <h2 style={styles.name}>{name}</h2>
           <p style={styles.description}>{description}</p>
 
-          <a
-            href={url}
-            target="_blank"
-            rel="noopener noreferrer"
-            style={styles.link}
-          >
-            Visit Profile
-          </a>
+          {url ? (
+            <a
+              href={url}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={styles.link}
+            >
+              Visit Profile
+            </a>
+          ) : (
+            <p style={styles.noLink}>No profile link available</p>
+          )}
         </div>
+
       </div>
     </div>
   )
@@ -49,24 +55,33 @@ const styles = {
     height: '200px',
     borderRadius: '8px',
     marginBottom: '12px',
-    objectFit: 'cover',   
-    },
+    objectFit: 'cover',
+  },
   content: {
     textAlign: 'left',
   },
   name: {
     margin: '0 0 8px',
+    fontSize: '1.3rem',
+    fontWeight: 'bold',
   },
   description: {
     fontSize: '14px',
     color: '#555',
+    marginBottom: '10px',
   },
   link: {
     display: 'inline-block',
     marginTop: '8px',
     color: '#007bff',
     textDecoration: 'none',
+    fontWeight: 'bold',
   },
+  noLink: {
+    marginTop: '8px',
+    color: '#777',
+    fontStyle: 'italic',
+  }
 }
 
 export default CreatorCard
