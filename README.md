@@ -40,7 +40,7 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented required features:
 
-👉🏿  [Watch the walkthrough](./assets/creatorverse-demo.mp4)
+👉🏿  [Watch the walkthrough](./assets/creatorverse7.mp4)
 
 
 GIF created with ...  👉🏿 ScreenToGif
